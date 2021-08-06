@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import useFetchUsers from 'services/useFetchUsers';
 import Base from 'templates/Base';
 import { User } from 'types';
@@ -15,12 +14,12 @@ const Users = ({ users }: UsersTemplateProps) => {
       {error ? (
         <p>{error}</p>
       ) : (
-        <Fragment>
+        <>
           <p>Users Page</p>
           {data?.map((user) => (
             <p key={user.id}>{user.name}</p>
           ))}
-        </Fragment>
+        </>
       )}
     </Base>
   );
