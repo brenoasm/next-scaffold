@@ -1,7 +1,12 @@
-import { AppProps } from 'next/app'
-import Head from 'next/head'
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { SWRConfig } from 'swr';
+import { ThemeProvider } from 'styled-components';
 
-import GlobalStyles from 'styles/global'
+import httpClient from 'utils/httpClient';
+
+import theme from 'styles/theme';
+import GlobalStyles from 'styles/global';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,9 +23,17 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <SWRConfig
+        value={{
+          fetcher: httpClient,
+        }}
+      >
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </SWRConfig>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

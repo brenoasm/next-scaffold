@@ -47,5 +47,10 @@ exports[`<Main /> should render the heading 1`] = `
   >
     Some description
   </h2>
+  <a
+    href="/users"
+  >
+    Go to Users
+  </a>
 </main>
 `;
